@@ -17,9 +17,9 @@ std::map<uint8_t, uint32_t> Utils::CalculateFrequency(const std::vector<uint8_t>
   for (uint8_t c : ciphertext)
 	frequency_map[c]++;
 
-  for (const auto &entry : frequency_map) {
-	std::cout << static_cast<int>(entry.first) << " "
-			  << entry.second << std::endl;
+  for (const auto &kEntry : frequency_map) {
+	std::cout << static_cast<int>(kEntry.first) << " "
+			  << kEntry.second << std::endl;
   }
 
   return frequency_map;
@@ -68,7 +68,7 @@ std::vector<uint64_t> Utils::ReadFileTo64BitBlocks(const std::string &filename) 
   return blocks;
 }
 
-void Utils::WriteBlocksToFile(const std::string &filename, std::string blocks) {
+void Utils::WriteBlocksToFile(const std::string &filename, const std::string& blocks) {
   std::ofstream file(filename, std::ios::binary);
 
   if (!file)

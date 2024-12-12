@@ -66,14 +66,14 @@ void DiffCryptAnalysis::DecryptLastOperation(std::vector<std::pair<uint64_t, uin
   return 0;
 }
 
-void DiffCryptAnalysis::DecryptHighestRound(uint32_t crackedKey,
+void DiffCryptAnalysis::DecryptHighestRound(uint32_t cracked_key,
 											std::vector<std::pair<uint64_t, uint64_t>> &ciphertexts) const {
   for (int i = 0; i < texts_number_; i++) {
 	uint64_t cipher_left_0 = ciphertexts[i].first & 0xFFFFFFFF;
 	uint64_t cipher_left_1 = ciphertexts[i].second & 0xFFFFFFFF;
 
-	uint64_t cipher_right_0 = UCipher::RoundFunction(cipher_left_0, crackedKey) ^ (ciphertexts[i].first >> 32);
-	uint64_t cipher_right_1 = UCipher::RoundFunction(cipher_left_1, crackedKey) ^ (ciphertexts[i].second >> 32);
+	uint64_t cipher_right_0 = UCipher::RoundFunction(cipher_left_0, cracked_key) ^ (ciphertexts[i].first >> 32);
+	uint64_t cipher_right_1 = UCipher::RoundFunction(cipher_left_1, cracked_key) ^ (ciphertexts[i].second >> 32);
 
 	ciphertexts[i].first = Utils::MergeBlock(cipher_left_0, cipher_right_0);
 	ciphertexts[i].second = Utils::MergeBlock(cipher_left_1, cipher_right_1);

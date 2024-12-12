@@ -21,7 +21,7 @@ class DiffCryptAnalysis {
   [[nodiscard]] uint32_t CrackHighestRound(uint32_t differential,
 										   std::vector<std::pair<uint64_t, uint64_t>> &ciphertexts) const;
 
-  void DecryptHighestRound(uint32_t crackedKey, std::vector<std::pair<uint64_t, uint64_t>> &ciphertexts) const;
+  void DecryptHighestRound(uint32_t cracked_key, std::vector<std::pair<uint64_t, uint64_t>> &ciphertexts) const;
 
   std::vector<uint32_t> CrackCipher();
 };
